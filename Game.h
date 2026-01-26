@@ -38,7 +38,7 @@ public:
 	int checkGuesses(std::vector<int> guesses) const;
 
 	/**
-	* Resets the game with a new list of numbers
+	* Sets the Game's attributes and generates the list of random numbers for guessing
 	* @param num the number of integers to be guessed
 	* @param min the lower bound of the range from which the integers will be guessed
 	* @param max the upper bound of the range from which the integers will be guessed
