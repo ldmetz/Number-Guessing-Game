@@ -39,8 +39,4 @@ public:
 	* @param max the upper bound of the range from which the integers will be guessed
 	*/
 	void setGame(int num, int min, int max);
-
-	int getMin() const { return rangeMin; }
-	int getMax() const { return rangeMax; }
-	int getSize() const { return numInts; }
 };

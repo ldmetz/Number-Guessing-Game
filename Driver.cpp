@@ -11,8 +11,8 @@
 
 int getNumToGuess();
 int getMaxNum();
-void runGuessing(const Game& game);
-std::vector<int> getGuesses(const Game& game);
+void runGuessing(const Game& game, int numToGuess, int rangeMin, int rangeMax);
+std::vector<int> getGuesses(int numToGuess, int min, int max);
 bool playAgain();
 
 int main() {
@@ -36,7 +36,7 @@ int main() {
 			continue;
 		}
 
-		runGuessing(game);
+		runGuessing(game, numToGuess, rangeMin, rangeMax);
 		play = playAgain();
 	}
 
@@ -74,22 +74,22 @@ int getMaxNum() {
 	return max;
 }
 
-void runGuessing(const Game& game) {
-	std::cout << "A random list of " << game.getSize()
-		<< ((game.getSize() > 1) ? " integers " : " integer ") << "from "
-		<< game.getMin() << " to " << game.getMax() << " has been generated.\n";
+void runGuessing(const Game& game, int numToGuess, int min, int max) {
+	std::cout << "A random list of " << numToGuess
+		<< ((numToGuess > 1) ? " integers " : " integer ") << "from "
+		<< min << " to " << max << " has been generated.\n";
 
 	int correctGuesses{};
 	while (true) {
 		try {
-			correctGuesses = game.checkGuesses(getGuesses(game));
+			correctGuesses = game.checkGuesses(getGuesses(numToGuess, min, max));
 		}
 		catch (const std::invalid_argument& e) {
 			std::cout << e.what();
 			continue;
 		}
 
-		if (correctGuesses == game.getSize()) {
+		if (correctGuesses == numToGuess) {
 			std::cout << "All guesses are correct!\n";
 			break;
 		}
@@ -99,18 +99,14 @@ void runGuessing(const Game& game) {
 }
 
 
-std::vector<int> getGuesses(const Game& game) {
-	const int numToGuess{ game.getSize() };
-	const int min{ game.getMin() };
-	const int max{ game.getMax() };
-
+std::vector<int> getGuesses(int numToGuess, int min, int max) {
 	std::cout << "Enter your guess of " << numToGuess << 
 		((numToGuess > 1) ? " integers " : " integer ") << "from "
 		<< min << " to " << max << ", separated by spaces: ";
 
 	std::vector<int> guesses{};
 
-	for (int i = 0; i < game.getSize(); i++) {
+	for (int i = 0; i < numToGuess; i++) {
 		int guess{};
 		while (!(std::cin >> guess) || !(guess >= min && guess <= max)) {
 			std::cout << "Invalid input. You must enter " << numToGuess
