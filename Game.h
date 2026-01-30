@@ -30,7 +30,7 @@ public:
 	* @param guesses a vector containing the user's guesses
 	* @return the number of correct guesses
 	*/
-	int checkGuesses(std::vector<int> guesses) const;
+	int checkGuesses(const std::vector<int>& guesses) const;
 
 	/**
 	* Sets the Game's attributes and generates the list of random numbers for guessing
