@@ -53,7 +53,7 @@ void Game::setGame(int num, int min, int max) {
 		throw std::invalid_argument("num must be greater than zero");
 	}
 	if (min > max) {
-		throw std::invalid_argument("min must be less than or equal to max");
+		throw std::invalid_argument("min must be less than max");
 	}
 
 	numInts = num;

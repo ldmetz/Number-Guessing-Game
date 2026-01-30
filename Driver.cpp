@@ -75,7 +75,8 @@ int getMaxNum() {
 }
 
 void runGuessing(const Game& game) {
-	std::cout << "A random list of " << game.getSize() << " integer(s) in the range from "
+	std::cout << "A random list of " << game.getSize()
+		<< ((game.getSize() > 1) ? " integers " : " integer ") << "from "
 		<< game.getMin() << " to " << game.getMax() << " has been generated.\n";
 
 	int correctGuesses{};
@@ -103,7 +104,8 @@ std::vector<int> getGuesses(const Game& game) {
 	const int min{ game.getMin() };
 	const int max{ game.getMax() };
 
-	std::cout << "Enter your guess of " << numToGuess << " integer(s) from "
+	std::cout << "Enter your guess of " << numToGuess << 
+		((numToGuess > 1) ? " integers " : " integer ") << "from "
 		<< min << " to " << max << ", separated by spaces: ";
 
 	std::vector<int> guesses{};
@@ -112,8 +114,8 @@ std::vector<int> getGuesses(const Game& game) {
 		int guess{};
 		while (!(std::cin >> guess) || !(guess >= min && guess <= max)) {
 			std::cout << "Invalid input. You must enter " << numToGuess
-				<< " integer(s) from " << min << " to " << max
-				<< ", separated by spaces. Try again: ";
+				<< ((numToGuess > 1) ? " integers " : " integer ") << "from "
+				<< min << " to " << max << ", separated by spaces. Try again: ";
 
 			std::cin.clear();
 			std::cin.ignore(1000, '\n');
