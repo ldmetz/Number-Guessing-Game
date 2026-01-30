@@ -31,7 +31,7 @@ int main() {
 		try {
 			game.setGame(numToGuess, rangeMin, rangeMax);
 		}
-		catch (const std::runtime_error& e) {
+		catch (const std::invalid_argument& e) {
 			std::cout << e.what();
 			continue;
 		}
@@ -83,7 +83,7 @@ void runGuessing(const Game& game) {
 		try {
 			correctGuesses = game.checkGuesses(getGuesses(game));
 		}
-		catch (const std::runtime_error& e) {
+		catch (const std::invalid_argument& e) {
 			std::cout << e.what();
 			continue;
 		}

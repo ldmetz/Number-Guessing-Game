@@ -44,10 +44,10 @@ int Game::checkGuesses(std::vector<int> guesses) const {
 
 void Game::setGame(int num, int min, int max) {
 	if (num <= 0) {
-		throw std::invalid_argument("num must be passed an argument greater than zero");
+		throw std::invalid_argument("num must be greater than zero");
 	}
 	if (min > max) {
-		throw std::invalid_argument("min may not be greater than max");
+		throw std::invalid_argument("min must be less than or equal to max");
 	}
 
 	numInts = num;
