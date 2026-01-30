@@ -18,17 +18,12 @@ private:
 
 public:
 	/**
-	* Constructs a blank game without generating the list of random numbers
-	*/
-	Game(){}
-
-	/**
 	* Constructs a game and generates its list of random numbers
 	* @param num the number of integers to be guessed
 	* @param min the lower bound of the range from which the integers will be guessed
 	* @param max the upper bound of the range from which the integers will be guessed
 	*/
-	Game(int num, int min, int max);
+	Game(int num = 1, int min = 1, int max = 10);
 
 	/**
 	* Checks the input guesses against the random list
