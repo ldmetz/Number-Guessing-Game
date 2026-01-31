@@ -52,7 +52,7 @@ void Game::setGame(int num, int min, int max) {
 	if (num <= 0) {
 		throw std::invalid_argument("num must be greater than zero");
 	}
-	if (min > max) {
+	if (min >= max) {
 		throw std::invalid_argument("min must be less than max");
 	}
 
